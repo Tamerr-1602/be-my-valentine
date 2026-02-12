@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fce4ec;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #d81b60;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        #yesBtn {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        img {
+            max-width: 300px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <img id="gif" src="https://media1.tenor.com/m/EIbExNGsANEAAAAC/%C4%91%E1%BB%A3i.gif" alt="Cute Bear">
+    
+    <h1 id="question">Will you be my Valentine?</h1>
+    
+    <div class="buttons">
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const question = document.getElementById('question');
+        const gif = document.getElementById('gif');
+        
+        let fontSize = 1.2;
+        let padding = 10;
+
+        noBtn.addEventListener('click', () => {
+            fontSize += 0.5;
+            padding += 5;
+            
+            yesBtn.style.fontSize = `${fontSize}rem`;
+            yesBtn.style.padding = `${padding}px ${padding * 2}px`;
+            
+            const phrases = ["Are you sure?", "Really sure?", "Think again!", "Last chance!", "Surely not?", "You might regret this!", "Give it another thought!", "Are you absolutely certain?", "This could be a mistake!", "Have a heart!", "Don't be so cold!", "Change of heart?", "Wouldn't you reconsider?", "Is that your final answer?", "You're breaking my heart ;("];
+            const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+            noBtn.innerText = randomPhrase;
+        });
+
+        yesBtn.addEventListener('click', () => {
+            document.body.innerHTML = `
+                <h1 style="color: #d81b60; font-size: 4rem;">Yay!!! I knew it! ❤️</h1>
+                <img src="https://media1.tenor.com/m/uBQM6iJ_hsgAAAAC/hug-cute.gif" style="max-width: 400px;">
+            `;
+        });
+    </script>
+</body>
+</html>
